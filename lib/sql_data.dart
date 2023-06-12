@@ -23,7 +23,9 @@ class SqlData {
     return mydb;
   }
 
-  _onUpgrade(Database db, int oldVersion, int newvesion) {}
+  _onUpgrade(Database db, int oldVersion, int newvesion) {
+    print('............. Upgreed .............');
+  }
 
   _onCreate(Database db, int version) async {
     await db.execute("""  CREATE TABLE Items(
