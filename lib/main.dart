@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:test/sql_data.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -9,20 +10,41 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SqlData sqlData = SqlData();
+
     return MaterialApp(
       title: 'Test',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('SQL Test'),
+          title: const Text('SQL Test'),
         ),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.add_a_photo),
-              )
+              MaterialButton(
+                onPressed: () async {
+                  int response = await sqlData.insertdata(
+                      "INSERT INTO 'Items'('Item') VALUES ('note one in table')");
+                  print(response);
+                },
+                color: Colors.orange,
+                textColor: Colors.black,
+                child: const Text('Insert Data'),
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              MaterialButton(
+                onPressed: () async {
+                  List<Map> response =
+                      await sqlData.readData("SELECT * FROM 'Items'");
+                  print(response);
+                },
+                color: Colors.orange,
+                textColor: Colors.black,
+                child: const Text('Read Data'),
+              ),
             ],
           ),
         ),

@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
@@ -11,6 +9,7 @@ class SqlData {
       _db = await initialDb();
       return _db;
     } else {
+      print('...............le table est déja creé..........................');
       return _db;
     }
   }
@@ -27,12 +26,10 @@ class SqlData {
   _onUpgrade(Database db, int oldVersion, int newvesion) {}
 
   _onCreate(Database db, int version) async {
-    await db.execute("""  CREATE TABLE "Item"(
-          id INTEGER AUTOINCREMENT NOT NULL PRIMARY KEY
-          Items TEXT 
-          descreption TEXT 
-
-    )       """);
+    await db.execute("""  CREATE TABLE Items(
+          id INTEGER PRIMARY KEY,
+          Item TEXT 
+    )""");
 
     print('..... TABLE AND DATABASE  IS CREATE .....');
   }
@@ -41,22 +38,21 @@ class SqlData {
 
   readData(String sql) async {
     Database? mydb = await db;
-
-    List<Map> response = mydb!.rawQuery(sql) as List<Map>;
+    var response = mydb!.rawQuery(sql);
     return response;
   }
 
 // Insert data
   insertdata(String sql) async {
     Database? mydb = await db;
-    int response = mydb!.rawInsert(sql) as int;
+    var response = mydb!.rawInsert(sql);
     return response;
   }
 // Update data
 
   updatedata(String sql) async {
     Database? mydb = await db;
-    int response = mydb!.rawUpdate(sql) as int;
+    var response = mydb!.rawUpdate(sql);
     return response;
   }
 
@@ -64,7 +60,7 @@ class SqlData {
 
   deletdata(String sql) async {
     Database? mydb = await db;
-    int response = mydb!.rawDelete(sql) as int;
+    var response = mydb!.rawDelete(sql);
     return response;
   }
 }
