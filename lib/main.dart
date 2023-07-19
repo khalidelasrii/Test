@@ -1,15 +1,15 @@
+
 import 'package:flutter/material.dart';
-import 'package:test/temp2.dart';
+
+
 
 void main() {
-  runApp(const MyApp());
+  runApp(Etoil());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+class Etoil extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: MyWidget());
+    return Expanded(child: Row(children: [IconButton(onPressed: (){}, icon: const Icon(Icons.star,color: Colors.amber,size: 16,))],));
   }
 }
