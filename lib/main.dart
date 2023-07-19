@@ -1,15 +1,22 @@
-
 import 'package:flutter/material.dart';
-
-
+import 'package:test/bloc/bloc/etoil_bloc.dart';
+import 'home.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
-  runApp(Etoil());
+  runApp( const Etoil(),
+  );
 }
 
 class Etoil extends StatelessWidget {
+  const Etoil({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Expanded(child: Row(children: [IconButton(onPressed: (){}, icon: const Icon(Icons.star,color: Colors.amber,size: 16,))],));
+    return MaterialApp(home: BlocProvider(
+        create: (BuildContext context) => EtoilBloc(),
+        child:const Home()
+       
+    ),);
   }
 }
