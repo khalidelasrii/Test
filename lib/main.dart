@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:test/bloc/bloc/etoil_bloc.dart';
-import 'home.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:test/screen/home.dart';
 
 void main() {
-  runApp( const Etoil(),
+  runApp(
+    const Etoil(),
   );
 }
 
@@ -13,10 +12,6 @@ class Etoil extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: BlocProvider(
-        create: (BuildContext context) => EtoilBloc(),
-        child:const Home()
-       
-    ),);
+    return MaterialApp(home: Home());
   }
 }
