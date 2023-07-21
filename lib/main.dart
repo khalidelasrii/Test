@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:test/screen/home.dart';
+import 'package:test/home.dart';
 
 void main() {
   runApp(
@@ -12,6 +12,6 @@ class Etoil extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: Home());
+    return const MaterialApp(home: Home());
   }
 }
