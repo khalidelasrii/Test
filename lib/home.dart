@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test/GroupsStars/ferst_group.dart';
+import 'package:test/bloc/bloc/etoil_bloc.dart';
 
 import 'GroupsStars/fift_group.dart';
 import 'GroupsStars/fourth_group.dart';
@@ -11,10 +13,13 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-        body: Column(
+    return BlocProvider(
+      create: (context) => EtoilBloc(),
+      child: const Scaffold(
+          body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -27,11 +32,17 @@ class Home extends StatelessWidget {
                       style: TextStyle(color: Colors.blue, fontSize: 18),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(right: 20,bottom: 20,),
+                      padding: EdgeInsets.only(
+                        right: 20,
+                        bottom: 20,
+                      ),
                       child: FerstGroup(),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(right: 20,bottom: 20,),
+                      padding: EdgeInsets.only(
+                        right: 20,
+                        bottom: 20,
+                      ),
                       child: TertGroup(),
                     ),
                   ],
@@ -48,13 +59,12 @@ class Home extends StatelessWidget {
                     ),
                   ],
                 ),
-                
-              
               ],
-
             ),
-            //  FiftGroup(), 
+            FifiGroup(),
           ],
-        ));
+        ),
+      )),
+    );
   }
 }

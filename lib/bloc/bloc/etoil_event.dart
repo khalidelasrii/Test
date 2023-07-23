@@ -17,8 +17,24 @@ class MousRegeontExitEvent4 extends EtoilEvent{}
 class MousRegeontExitEvent5 extends EtoilEvent{}
 
 
-class PressedStar1 extends EtoilEvent{}
-class PressedStar2 extends EtoilEvent{}
-class PressedStar3 extends EtoilEvent{}
-class PressedStar4 extends EtoilEvent{}
-class PressedStar5 extends EtoilEvent{}
+class Total1 extends EtoilEvent{
+  final double Total;
+
+  Total1({required this.Total});
+}
+class Total2 extends EtoilEvent{
+    final double Total;
+
+  Total2({required this.Total});
+}
+class Total3 extends EtoilEvent{
+    final double Total;
+
+  Total3({required this.Total});
+}
+class Total4 extends EtoilEvent{
+    final double Total;
+
+  Total4({required this.Total});
+}
+

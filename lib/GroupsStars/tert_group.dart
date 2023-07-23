@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test/bloc/bloc/etoil_bloc.dart';
 
-int lasomme = 0;
-dynamic eventis;
-Color amber = Colors.amber;
-Color black = Colors.black;
+
+
+
 
 class TertGroup extends StatelessWidget {
   const TertGroup({
@@ -14,13 +13,16 @@ class TertGroup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    dynamic eventis;
+    double lasomme = 0;
+    Color amber = Colors.amber;
+Color black = Colors.black;
     return BlocProvider(
         create: (context) => EtoilBloc(),
         child: StatefulBuilder(builder: (context, setState) {
           if (eventis != null) {
             setState(() {
               BlocProvider.of<EtoilBloc>(context).add(eventis);
-              print(lasomme);
             });
           }
           return Row(
@@ -41,9 +43,10 @@ class TertGroup extends StatelessWidget {
                   onPressed: () {
                     setState(() {
                       lasomme = 1;
-                      BlocProvider.of<EtoilBloc>(context)
-                          .add(PressedStar1());
+                     
                     });
+ BlocProvider.of<EtoilBloc>(context).add(Total3(Total: 1));
+
                   },
                   icon: BlocBuilder<EtoilBloc, EtoilState>(
                     builder: (context, state) {
@@ -108,9 +111,10 @@ class TertGroup extends StatelessWidget {
                   onPressed: () {
                     setState(() {
                       lasomme = 2;
-                      BlocProvider.of<EtoilBloc>(context)
-                          .add(PressedStar2());
+                     
                     });
+   BlocProvider.of<EtoilBloc>(context).add(Total3(Total: 2));
+
                   },
                   icon: BlocBuilder<EtoilBloc, EtoilState>(
                     builder: (context, state) {
@@ -190,9 +194,10 @@ class TertGroup extends StatelessWidget {
                   onPressed: () {
                     setState(() {
                       lasomme = 3;
-                      BlocProvider.of<EtoilBloc>(context)
-                          .add(PressedStar3());
+                    
                     });
+     BlocProvider.of<EtoilBloc>(context).add(Total3(Total: 3));
+
                   },
                   icon: BlocBuilder<EtoilBloc, EtoilState>(
                     builder: (context, state) {
@@ -272,9 +277,10 @@ class TertGroup extends StatelessWidget {
                   onPressed: () {
                     setState(() {
                       lasomme = 4;
-                      BlocProvider.of<EtoilBloc>(context)
-                          .add(PressedStar4());
+                    
                     });
+     BlocProvider.of<EtoilBloc>(context).add(Total3(Total: 4));
+
                   },
                   icon: BlocBuilder<EtoilBloc, EtoilState>(
                     builder: (context, state) {
@@ -355,9 +361,10 @@ class TertGroup extends StatelessWidget {
                   onPressed: () {
                     setState(() {
                       lasomme = 5;
-                      BlocProvider.of<EtoilBloc>(context)
-                          .add(PressedStar5());
+                      
                     });
+   BlocProvider.of<EtoilBloc>(context).add(Total3(Total: 5));
+
                   },
                   icon: BlocBuilder<EtoilBloc, EtoilState>(
                     builder: (context, state) {

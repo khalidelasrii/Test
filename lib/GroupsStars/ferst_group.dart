@@ -2,12 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test/bloc/bloc/etoil_bloc.dart';
 
-int lasomme = 0;
-dynamic eventis;
-Color amber = Colors.amber;
-Color black = Colors.black;
-bool isPressed= false;
-
 class FerstGroup extends StatelessWidget {
   const FerstGroup({
     super.key,
@@ -15,15 +9,18 @@ class FerstGroup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-        create: (context) => EtoilBloc(),
-        child: StatefulBuilder(builder: (context, setState) {
+    double lasomme = 0;
+    dynamic eventis;
+    Color amber = Colors.amber;
+    Color black = Colors.black;
+    return  StatefulBuilder(builder: (context, setState) {
           if (eventis != null) {
             setState(() {
               BlocProvider.of<EtoilBloc>(context).add(eventis);
-              print(lasomme);
+              
             });
           }
+
           return Row(
             children: [
 ////////////////////////////////////////////////////////////Star 1
@@ -40,10 +37,10 @@ class FerstGroup extends StatelessWidget {
                 },
                 child: IconButton(
                   onPressed: () {
-                  lasomme = 1;
-                   BlocProvider.of<EtoilBloc>(context)
-                          .add(PressedStar1());
-                      
+                    setState(() {
+                      lasomme = 2;
+                      BlocProvider.of<EtoilBloc>(context).add(Total1(Total: 1));
+                    });
                   },
                   icon: BlocBuilder<EtoilBloc, EtoilState>(
                     builder: (context, state) {
@@ -108,8 +105,7 @@ class FerstGroup extends StatelessWidget {
                   onPressed: () {
                     setState(() {
                       lasomme = 2;
-                      BlocProvider.of<EtoilBloc>(context)
-                          .add(PressedStar2());
+                      BlocProvider.of<EtoilBloc>(context).add(Total1(Total: 2));
                     });
                   },
                   icon: BlocBuilder<EtoilBloc, EtoilState>(
@@ -190,8 +186,7 @@ class FerstGroup extends StatelessWidget {
                   onPressed: () {
                     setState(() {
                       lasomme = 3;
-                      BlocProvider.of<EtoilBloc>(context)
-                          .add(PressedStar3());
+                      BlocProvider.of<EtoilBloc>(context).add(Total1(Total: 3));
                     });
                   },
                   icon: BlocBuilder<EtoilBloc, EtoilState>(
@@ -272,8 +267,7 @@ class FerstGroup extends StatelessWidget {
                   onPressed: () {
                     setState(() {
                       lasomme = 4;
-                      BlocProvider.of<EtoilBloc>(context)
-                          .add(PressedStar4());
+                      BlocProvider.of<EtoilBloc>(context).add(Total1(Total: 4));
                     });
                   },
                   icon: BlocBuilder<EtoilBloc, EtoilState>(
@@ -285,15 +279,14 @@ class FerstGroup extends StatelessWidget {
                           size: 25,
                         );
                       } else if (state is MousRegeontState1 ||
-                          state is MousRegeontState2||
+                          state is MousRegeontState2 ||
                           state is MousRegeontState3) {
                         return Icon(
                           Icons.star,
                           color: black,
                           size: 25,
                         );
-                      } else if (
-                          state is MousRegeontState4 ||
+                      } else if (state is MousRegeontState4 ||
                           state is MousRegeontState5) {
                         return Icon(
                           Icons.star,
@@ -353,12 +346,9 @@ class FerstGroup extends StatelessWidget {
                 },
                 child: IconButton(
                   onPressed: () {
-                    lasomme = 5;
                     setState(() {
-                    
-                      
-                      BlocProvider.of<EtoilBloc>(context)
-                          .add(PressedStar5());
+                      lasomme = 5;
+                      BlocProvider.of<EtoilBloc>(context).add(Total1(Total: 5));
                     });
                   },
                   icon: BlocBuilder<EtoilBloc, EtoilState>(
@@ -370,16 +360,15 @@ class FerstGroup extends StatelessWidget {
                           size: 25,
                         );
                       } else if (state is MousRegeontState1 ||
-                          state is MousRegeontState2||
-                          state is MousRegeontState3||
+                          state is MousRegeontState2 ||
+                          state is MousRegeontState3 ||
                           state is MousRegeontState4) {
                         return Icon(
                           Icons.star,
                           color: black,
                           size: 25,
                         );
-                      } else if (
-                          state is MousRegeontState5) {
+                      } else if (state is MousRegeontState5) {
                         return Icon(
                           Icons.star,
                           color: amber,
@@ -426,6 +415,245 @@ class FerstGroup extends StatelessWidget {
               ),
             ],
           );
-        }));
+        });
   }
 }
+
+class FifiGroup extends StatelessWidget {
+  const FifiGroup({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    double lasomme = 0;
+    const amber = Colors.amber;
+    const black = Colors.black;
+    return StatefulBuilder(builder: (context, setState) {
+          return BlocBuilder<EtoilBloc,EtoilState>(builder: (context, state) {
+            
+                  if (state is EtoilInitial) {
+                    return const Row(
+                      children: [
+                        Icon(
+                          Icons.star,
+                          color: black,
+                          size: 25,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: black,
+                          size: 25,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: black,
+                          size: 25,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: black,
+                          size: 25,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: black,
+                          size: 25,
+                        ),
+                      ],
+                    );
+                  } else if (state is TotalEtoil) {
+                    lasomme = state.Total;
+                    print(lasomme);
+                    if (lasomme == 0) {
+                      return const Row(
+                        children: [
+                          Icon(
+                            Icons.star,
+                            color: amber,
+                            size: 25,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: black,
+                            size: 25,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: black,
+                            size: 25,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: black,
+                            size: 25,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: black,
+                            size: 25,
+                          ),
+                        ],
+                      );
+                    } else if (  lasomme <2) {
+                      return const Row(
+                        children: [
+                          Icon(
+                            Icons.star,
+                            color: amber,
+                            size: 25,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: black,
+                            size: 25,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: black,
+                            size: 25,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: black,
+                            size: 25,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: black,
+                            size: 25,
+                          ),
+                        ],
+                      );
+                    } else if (2<=lasomme && lasomme <3) {
+                      return const Row(
+                        children: [
+                          Icon(
+                            Icons.star,
+                            color: amber,
+                            size: 25,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: amber,
+                            size: 25,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: black,
+                            size: 25,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: black,
+                            size: 25,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: black,
+                            size: 25,
+                          ),
+                        ],
+                      );
+                    } else if (3<=lasomme && lasomme <4) {
+                      return const Row(
+                        children: [
+                          Icon(
+                            Icons.star,
+                            color: amber,
+                            size: 25,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: amber,
+                            size: 25,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: amber,
+                            size: 25,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: black,
+                            size: 25,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: black,
+                            size: 25,
+                          ),
+                        ],
+                      );
+                    } else if (4<=lasomme && lasomme <5) {
+                      return const Row(
+                        children: [
+                          Icon(
+                            Icons.star,
+                            color: amber,
+                            size: 25,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: amber,
+                            size: 25,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: amber,
+                            size: 25,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: amber,
+                            size: 25,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: black,
+                            size: 25,
+                          ),
+                        ],
+                      );
+                    } else if (4< lasomme ) {
+                      return const Row(
+                        children: [
+                          Icon(
+                            Icons.star,
+                            color: amber,
+                            size: 25,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: amber,
+                            size: 25,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: amber,
+                            size: 25,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: amber,
+                            size: 25,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: amber,
+                            size: 25,
+                          ),
+                        ],
+                      );
+                    }
+                  }return SizedBox();
+        
+                } 
+              );
+        }
+           
+        );
+          }
+        
+    
+    
+  }
+
