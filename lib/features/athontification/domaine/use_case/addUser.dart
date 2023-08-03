@@ -9,7 +9,7 @@ class AddUserUseCase {
 
   AddUserUseCase(this.authRepository);
 
-  Future<Either<Failure,Unit>> call(User user) async {
+  Future<Either<Failure, Unit>> call(User user) async {
     return await authRepository.addUser(user);
   }
 }
