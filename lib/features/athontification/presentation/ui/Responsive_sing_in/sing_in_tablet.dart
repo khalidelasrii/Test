@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../core/const_widgets/Logo.dart';
 import '../../../../../core/const_widgets/drawer.dart';
 import '../../../../../core/const_widgets/my_color.dart';
-import '../../wedgets/Sing_in_faild.dart';
+import '../../wedgets/Sing_up_faild.dart';
 
 class SingInTablet extends StatelessWidget {
   const SingInTablet({super.key});
@@ -44,7 +44,7 @@ class SingInTablet extends StatelessWidget {
                             bottomLeft: Radius.circular(25),
                             bottomRight: Radius.circular(25)),
                       ),
-                      child: SignUpfaild(),
+                      child: const SignUpfaild(),
                     ))
               ],
             ),

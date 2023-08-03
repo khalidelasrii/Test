@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 class ResponsiveMode extends StatelessWidget {
   const ResponsiveMode(
@@ -20,7 +19,7 @@ class ResponsiveMode extends StatelessWidget {
       } else if (constraints.maxWidth >= 900) {
         return disktopscafold;
       }
-      return SizedBox();
+      return const SizedBox();
     });
   }
 }

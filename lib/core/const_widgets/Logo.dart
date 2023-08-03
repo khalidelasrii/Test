@@ -8,7 +8,7 @@ Widget Logo(BuildContext context) {
     onPressed: () {
       Navigator.pushNamed(context, Home.screenRout);
     },
-    child: Text(
+    child: const Text(
       'Milo Tech ',
       style: TextStyle(fontSize: 20),
     ),

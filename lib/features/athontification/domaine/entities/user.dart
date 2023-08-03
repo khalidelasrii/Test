@@ -5,7 +5,7 @@ class User extends Equatable {
   final String email;
   final String password;
 
-  User({required this.id,required this.email,required this.password});
+  const User({required this.id,required this.email,required this.password});
   @override
   List<Object?> get props => [id,email,password];
 

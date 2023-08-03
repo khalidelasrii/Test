@@ -10,7 +10,7 @@ class SingIn extends StatelessWidget {
   static const String screenRout = 'SingIn';
   @override
   Widget build(BuildContext context) {
-    return ResponsiveMode(
+    return const ResponsiveMode(
         disktopscafold: SingInDisktop(),
         mobilescafold: SingInMobile(),
         tabletscafold: SingInTablet());

@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:test/core/const_widgets/Logo.dart';
@@ -6,7 +5,6 @@ import 'package:test/core/const_widgets/drawer.dart';
 import 'package:test/core/const_widgets/my_color.dart';
 
 import '../../wedgets/Sing_in_faild.dart';
-import '../../wedgets/Sing_up_faild.dart';
 
 class SingInDisktop extends StatelessWidget {
   const SingInDisktop({super.key});
@@ -43,7 +41,7 @@ class SingInDisktop extends StatelessWidget {
                             topRight: Radius.circular(25),
                             bottomRight: Radius.circular(25)),
                       ),
-                      child: SignInfaild(),
+                      child: const SignInfaild(),
                     ))
               ],
             ),

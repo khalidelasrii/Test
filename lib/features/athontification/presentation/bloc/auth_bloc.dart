@@ -5,9 +5,12 @@ part 'auth_event.dart';
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
+  String? email;
+  String? password;
+  String? username;
   AuthBloc() : super(AuthInitial()) {
     on<AuthEvent>((event, emit) {
-      // TODO: implement event handler
+      if (event is SingInEvent) {}
     });
   }
 }

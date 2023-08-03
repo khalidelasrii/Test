@@ -9,7 +9,7 @@ class SingUp extends StatelessWidget {
   static const String screenRout = 'SingUp';
   @override
   Widget build(BuildContext context) {
-    return ResponsiveMode(
+    return const ResponsiveMode(
         disktopscafold: SingUpDisktop(),
         mobilescafold: SingUpMobile(),
         tabletscafold: SingUpTablet());

@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:test/features/athontification/presentation/bloc/auth_bloc.dart';
 
-class SignUpfaild extends StatelessWidget {
-  const SignUpfaild({super.key});
+class SignInfaild extends StatelessWidget {
+  const SignInfaild({super.key});
 
   @override
   Widget build(BuildContext context) {
     late String email;
     late String password;
-    late String username;
     return Center(
         child: SingleChildScrollView(
       child: Column(
@@ -17,33 +18,6 @@ class SignUpfaild extends StatelessWidget {
             child: Text(
               'Create Account',
               style: TextStyle(color: Colors.white, fontSize: 20),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 8),
-            child: SizedBox(
-              child: TextField(
-                onChanged: (valeur) {
-                  username = valeur;
-                },
-                keyboardType: TextInputType.emailAddress,
-                decoration: const InputDecoration(
-                  hoverColor: Colors.blue,
-                  hintText: 'User-name',
-                  hintStyle: TextStyle(color: Colors.white),
-                  filled: true,
-                  fillColor: Color.fromARGB(255, 209, 194, 149),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.blue, width: 1),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.orange, width: 2),
-                  ),
-                ),
-              ),
             ),
           ),
           Padding(
@@ -102,10 +76,10 @@ class SignUpfaild extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              // Vous pouvez utiliser les variables "email" et "password" ici pour soumettre les informations d'inscription.
-              print('Email: $email, Password: $password');
+              BlocProvider.of<AuthBloc>(context)
+                  .add(SingInEvent(email: email, password: password));
             },
-            child: Text('S\'inscrire'),
+            child: const Text('Connexion'),
           ),
         ],
       ),
