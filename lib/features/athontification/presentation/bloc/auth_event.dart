@@ -12,6 +12,7 @@ class SingInEvent extends AuthEvent {
   final String password;
 
   const SingInEvent({required this.email, required this.password});
+   List<Object> get props => [email,password];
 }
 
 class SingUpEvent extends AuthEvent {
@@ -21,4 +22,6 @@ class SingUpEvent extends AuthEvent {
 
   const SingUpEvent(
       {required this.email, required this.password, required this.usernam});
+         List<Object> get props => [usernam,email,password];
+
 }

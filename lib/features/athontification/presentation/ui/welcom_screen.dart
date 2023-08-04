@@ -28,18 +28,18 @@ class WelcomScreen extends StatelessWidget {
                 Expanded(
                     child: Container(
                   decoration: const BoxDecoration(
-                    color: my_amber,
+                    color: Colors.black,
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(25),
                         topRight: Radius.circular(25)),
                   ),
-                  child: Center(child: Logo(context)),
+                  child: Center(child: Expanded(child: Image.asset('images/milo3.png'),)),
                 )),
                 Expanded(
                     flex: 4,
                     child: Container(
                       decoration: const BoxDecoration(
-                        color: my_red,
+                        gradient:  LinearGradient(colors: [Colors.black,Colors.blue],begin:Alignment.topCenter,end:Alignment.bottomCenter  ),
                         borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(25),
                             bottomRight: Radius.circular(25)),

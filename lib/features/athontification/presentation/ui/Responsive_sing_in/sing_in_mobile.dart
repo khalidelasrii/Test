@@ -13,12 +13,12 @@ class SingInMobile extends StatelessWidget {
     return Scaffold(
       backgroundColor: my_blue_gray,
       appBar: AppBar(
-        backgroundColor: my_blue_gray,
-        title: Logo(context),
+        backgroundColor: Colors.white,
+        title:  Expanded(child: Image.asset('images/milo1.png')),
         actions: const [Icon(Icons.park_outlined)],
       ),
-      drawer: myDrawer(context),
-      body: Center(
+      drawer: myDrawer(context)
+,      body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
           child: Container(
@@ -33,7 +33,7 @@ class SingInMobile extends StatelessWidget {
                         topLeft: Radius.circular(25),
                         topRight: Radius.circular(25)),
                   ),
-                  child: Center(child: Logo(context)),
+                  child: Center(child: Expanded(child: Image.asset('images/milo3.png'),),),
                 )),
                 Expanded(
                     flex: 2,
