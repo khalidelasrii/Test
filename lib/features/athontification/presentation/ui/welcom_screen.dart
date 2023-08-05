@@ -16,6 +16,7 @@ class WelcomScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Welcom home'),
         backgroundColor: my_blue_gray,
+        shadowColor: Colors.transparent,
       ),
       drawer: myDrawer(context),
       body: Center(
@@ -27,9 +28,11 @@ class WelcomScreen extends StatelessWidget {
               children: [
                 Expanded(
                     child: Container(
-                  decoration: const BoxDecoration(
+
+                  decoration:  BoxDecoration(
                     color: Colors.black,
-                    borderRadius: BorderRadius.only(
+                    border: Border.all(color: Colors.black),
+                    borderRadius:const BorderRadius.only(
                         topLeft: Radius.circular(25),
                         topRight: Radius.circular(25)),
                   ),
@@ -38,9 +41,11 @@ class WelcomScreen extends StatelessWidget {
                 Expanded(
                     flex: 4,
                     child: Container(
-                      decoration: const BoxDecoration(
-                        gradient:  LinearGradient(colors: [Colors.black,Colors.blue],begin:Alignment.topCenter,end:Alignment.bottomCenter  ),
-                        borderRadius: BorderRadius.only(
+                      decoration:  BoxDecoration(
+                        border: Border.all(color: Colors.black),
+
+                        gradient: const LinearGradient(colors: [Colors.black,Colors.blue],begin:Alignment.topCenter,end:Alignment.bottomCenter  ),
+                        borderRadius: const BorderRadius.only(
                             bottomLeft: Radius.circular(25),
                             bottomRight: Radius.circular(25)),
                       ),

@@ -12,8 +12,11 @@ class SingUpDisktop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: my_blue_gray,
-      appBar: AppBar(backgroundColor: my_blue_gray, title: Logo(context)),
+      backgroundColor:Colors.black ,
+      appBar: AppBar(backgroundColor: Colors.black, title: Padding(
+        padding: const EdgeInsets.all(2.0),
+        child: Expanded(child: Image.asset('images/milo2.png')),
+      )),
       drawer: myDrawer(context),
       body: Center(
         child: Padding(
@@ -25,18 +28,18 @@ class SingUpDisktop extends StatelessWidget {
                 Expanded(
                     child: Container(
                   decoration: const BoxDecoration(
-                    color: my_amber,
+                    color: Colors.white,
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(25),
                         bottomLeft: Radius.circular(25)),
                   ),
-                  child: Center(child: Logo(context)),
+                  child: Center(child:  Expanded(child: Image.asset('images/milo1.png')),),
                 )),
                 Expanded(
                     flex: 2,
                     child: Container(
                       decoration: const BoxDecoration(
-                        color: my_red,
+                        gradient: LinearGradient(colors: [Colors.white,Colors.blue]),
                         borderRadius: BorderRadius.only(
                             topRight: Radius.circular(25),
                             bottomRight: Radius.circular(25)),

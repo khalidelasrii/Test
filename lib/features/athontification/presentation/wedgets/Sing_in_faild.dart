@@ -7,8 +7,14 @@ class SignInfaild extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    late String email;
-    late String password;
+    final _emailControllor=TextEditingController();
+    final  _passwordControllor=TextEditingController();
+
+    @override
+    void dispose() {
+      _emailControllor.dispose();
+      _passwordControllor.dispose();
+    }
     return Center(
         child: SingleChildScrollView(
       child: Column(
@@ -20,13 +26,13 @@ class SignInfaild extends StatelessWidget {
               style: TextStyle(color: Colors.white, fontSize: 20),
             ),
           ),
+
+          /// .............................................Email TextField
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 8),
             child: SizedBox(
               child: TextField(
-                onChanged: (valeur) {
-                  email = valeur;
-                },
+                controller: _emailControllor,
                 keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(
                   hoverColor: Colors.blue,
@@ -47,13 +53,13 @@ class SignInfaild extends StatelessWidget {
               ),
             ),
           ),
+ /// .............................................Password TextField
+
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 40),
             child: SizedBox(
               child: TextField(
-                onChanged: (valeur) {
-                  password = valeur;
-                },
+                controller: _passwordControllor,
                 obscureText: true,
                 decoration: const InputDecoration(
                   hintText: 'Password',
@@ -76,8 +82,7 @@ class SignInfaild extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              BlocProvider.of<AuthBloc>(context)
-                  .add(SingInEvent(email: email, password: password));
+              BlocProvider.of<AuthBloc>(context).add(SingInEvent(email: _emailControllor, password: _passwordControllor));
             },
             child: const Text('Connexion'),
           ),

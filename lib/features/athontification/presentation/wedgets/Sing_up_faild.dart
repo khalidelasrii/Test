@@ -7,9 +7,9 @@ class SignUpfaild extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    late String email;
-    late String password;
-    late String usernam;
+    final  _emailControllor =TextEditingController();
+    final  _passwordControllor=TextEditingController();
+    final  _usernamControllor=TextEditingController();
     return Center(
         child: SingleChildScrollView(
       child: Column(
@@ -21,13 +21,12 @@ class SignUpfaild extends StatelessWidget {
               style: TextStyle(color: Colors.white, fontSize: 20),
             ),
           ),
+/// ............................................ Name Field
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 8),
             child: SizedBox(
               child: TextField(
-                onChanged: (valeur) {
-                  usernam = valeur;
-                },
+               controller: _usernamControllor,
                 keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(
                   hoverColor: Colors.blue,
@@ -48,13 +47,12 @@ class SignUpfaild extends StatelessWidget {
               ),
             ),
           ),
+/// ............................................ email Field
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 8),
             child: SizedBox(
               child: TextField(
-                onChanged: (valeur) {
-                  email = valeur;
-                },
+                controller: _emailControllor,
                 keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(
                   hoverColor: Colors.blue,
@@ -75,13 +73,12 @@ class SignUpfaild extends StatelessWidget {
               ),
             ),
           ),
+/// ............................................Passwod Field
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 40),
             child: SizedBox(
               child: TextField(
-                onChanged: (valeur) {
-                  password = valeur;
-                },
+                controller: _passwordControllor,
                 obscureText: true,
                 decoration: const InputDecoration(
                   hintText: 'Password',
@@ -105,7 +102,7 @@ class SignUpfaild extends StatelessWidget {
           ElevatedButton(
             onPressed: () {
               BlocProvider.of<AuthBloc>(context).add(SingUpEvent(
-                  email: email, password: password, usernam: usernam));
+                  email: _emailControllor, password: _passwordControllor, usernam: _passwordControllor));
             },
             child: const Text('S\'inscrire'),
           ),

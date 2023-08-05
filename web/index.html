@@ -31,6 +31,20 @@
 
   <title>test</title>
   <link rel="manifest" href="manifest.json">
+  <script type="module">
+      import { initializeApp } from "firebase/app";
+
+        const firebaseConfig = {
+      apiKey: "AIzaSyAnDd9ptfdTcN9-v8PYo508bVcNoIyZhsM",
+      authDomain: "test-faa0e.firebaseapp.com",
+      projectId: "test-faa0e",
+      storageBucket: "test-faa0e.appspot.com",
+      messagingSenderId: "471563730284",
+      appId: "1:471563730284:web:cd12a8560e3da41bc30749"
+    };
+
+    const app = initializeApp(firebaseConfig);
+  </script>
 
   <script>
     // The value below is injected by flutter build, do not touch.

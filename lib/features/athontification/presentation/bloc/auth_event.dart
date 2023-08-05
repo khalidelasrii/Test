@@ -8,17 +8,17 @@ abstract class AuthEvent extends Equatable {
 }
 
 class SingInEvent extends AuthEvent {
-  final String email;
-  final String password;
+  final TextEditingController email;
+  final TextEditingController password;
 
   const SingInEvent({required this.email, required this.password});
    List<Object> get props => [email,password];
 }
 
 class SingUpEvent extends AuthEvent {
-  final String usernam;
-  final String email;
-  final String password;
+  final TextEditingController usernam;
+  final TextEditingController email;
+  final TextEditingController password;
 
   const SingUpEvent(
       {required this.email, required this.password, required this.usernam});

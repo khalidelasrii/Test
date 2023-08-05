@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:test/core/const_widgets/Logo.dart';
 import 'package:test/core/const_widgets/drawer.dart';
@@ -10,23 +11,32 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser!;
     return Scaffold(
       backgroundColor: my_blue_gray,
       drawer: myDrawer(context),
       appBar: AppBar(
         backgroundColor: my_blue_gray,
-        title: Logo(context),
+        title: Row(
+          children: [
+            Logo(context),
+            SizedBox(width: 15,),
+            Expanded(child: Text('${user.email}')),
+          ],
+        ),
         actions: [
           Center(
             child: SizedBox(
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, WelcomScreen.screenRout);
+                FirebaseAuth.instance.signOut();
                 },
                 child: const Row(
                   children: [
-                    Icon(Icons.person_add_alt_1_rounded),
-                    Text('Se connecter')
+                    Text('Deconnecter'),
+                    SizedBox(width: 2),
+                    Icon(Icons.exit_to_app),
+
                   ],
                 ),
               ),
