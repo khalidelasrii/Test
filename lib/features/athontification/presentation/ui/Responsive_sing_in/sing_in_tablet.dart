@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/const_widgets/Logo.dart';
+import '../../../../../core/const_widgets/my_Appbar.dart';
 import '../../../../../core/const_widgets/drawer.dart';
 import '../../../../../core/const_widgets/my_color.dart';
+import '../../bloc/auth_bloc.dart';
 import '../../wedgets/Sing_up_faild.dart';
 
 class SingInTablet extends StatelessWidget {
@@ -13,9 +15,17 @@ class SingInTablet extends StatelessWidget {
     return Scaffold(
       backgroundColor: my_blue_gray,
       appBar: AppBar(
-        backgroundColor: my_blue_gray,
-        title: Logo(context),
-        actions: const [Icon(Icons.park_outlined)],
+        title: Expanded(
+          child: Image.asset('images/milo2.png'),
+        ),
+        actions: [
+          BlocBuilder(builder: (context, state) {
+            if (state is AppbarState) {
+              return state.appBar;
+            }
+            return SizedBox();
+          })
+        ],
       ),
       drawer: myDrawer(context),
       body: Center(
@@ -33,7 +43,9 @@ class SingInTablet extends StatelessWidget {
                         topLeft: Radius.circular(25),
                         topRight: Radius.circular(25)),
                   ),
-                  child: Center(child: Logo(context)),
+                  child: Center(child:Expanded(
+                    child: Image.asset('images/milo2.png'),
+                  ), ),
                 )),
                 Expanded(
                     flex: 2,

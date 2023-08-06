@@ -25,3 +25,8 @@ class SingUpEvent extends AuthEvent {
          List<Object> get props => [usernam,email,password];
 
 }
+class AppbarEvent extends AuthEvent{
+  final Widget appBar;
+
+  AppbarEvent({required this.appBar});
+}

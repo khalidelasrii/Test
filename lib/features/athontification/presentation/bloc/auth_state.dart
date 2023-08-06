@@ -12,3 +12,8 @@ class AuthInitial extends AuthState {}
 class ConnexionStateConnect extends AuthState {}
 
 class ConnexionStateFilde extends AuthState {}
+class AppbarState extends AuthState{
+  final Widget appBar;
+
+  AppbarState({required this.appBar});
+}

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:test/core/const_widgets/Logo.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:test/core/const_widgets/my_Appbar.dart';
 import 'package:test/core/const_widgets/drawer.dart';
 import 'package:test/core/const_widgets/my_color.dart';
 
+import '../../bloc/auth_bloc.dart';
 import '../../wedgets/Sing_up_faild.dart';
 
 class SingInMobile extends StatelessWidget {
@@ -12,11 +14,11 @@ class SingInMobile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: my_blue_gray,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title:  Expanded(child: Image.asset('images/milo1.png')),
-        actions: const [Icon(Icons.park_outlined)],
-      ),
+      appBar: AppBar(title: Expanded(child: Image.asset('images/milo2.png'),),actions: [BlocBuilder(builder: (context,state){
+        if(state is AppbarState){
+          return state.appBar;
+        }return const SizedBox();
+      })],) ,
       drawer: myDrawer(context)
 ,      body: Center(
         child: Padding(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/const_widgets/Logo.dart';
+import '../../../../../core/const_widgets/my_Appbar.dart';
 import '../../../../../core/const_widgets/drawer.dart';
 import '../../../../../core/const_widgets/my_color.dart';
 import '../../wedgets/Sing_up_faild.dart';
@@ -14,7 +14,7 @@ class SingUpTablet extends StatelessWidget {
       backgroundColor: my_blue_gray,
       appBar: AppBar(
         backgroundColor: my_blue_gray,
-        title: Logo(context),
+        title: Expanded(child: Image.asset('images/milo2.png')),
         actions: const [Icon(Icons.park_outlined)],
       ),
       drawer: myDrawer(context),
@@ -33,7 +33,7 @@ class SingUpTablet extends StatelessWidget {
                         topLeft: Radius.circular(25),
                         topRight: Radius.circular(25)),
                   ),
-                  child: Center(child: Logo(context)),
+                  child: Center(child: Expanded(child: Image.asset('images/milo2.png'))),
                 )),
                 Expanded(
                     flex: 2,

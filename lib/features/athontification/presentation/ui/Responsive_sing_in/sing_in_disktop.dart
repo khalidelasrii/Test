@@ -1,8 +1,7 @@
-import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
-import 'package:test/core/const_widgets/Logo.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test/core/const_widgets/drawer.dart';
-import 'package:test/core/const_widgets/my_color.dart';
+import 'package:test/features/athontification/presentation/bloc/auth_bloc.dart';
 import 'package:test/home.dart';
 
 import '../../wedgets/Sing_in_faild.dart';
@@ -16,10 +15,11 @@ class SingInDisktop extends StatelessWidget {
       backgroundColor: Colors.black87,
 
       /// ///////////////////AppBar
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        shadowColor: Colors.transparent,
-      ),
+      appBar: AppBar(title: Expanded(child: Image.asset('images/milo2.png'),),actions: [BlocBuilder(builder: (context,state){
+       if(state is AppbarState){
+         return state.appBar;
+       }return SizedBox();
+      })],) ,
 
       /// ////////////////Drawer
       drawer: myDrawer(context),
@@ -34,23 +34,23 @@ class SingInDisktop extends StatelessWidget {
               children: [
                 Expanded(
                     child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.black,
-                    border: Border.all(color: Colors.black),
-                    borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(25),
-                        bottomLeft: Radius.circular(25)),
-                  ),
-                  child: Center(
-                      child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.transparent),
-                    onPressed: () {
-                      Navigator.pushNamed(context, Home.screenRout);
-                    },
-                    child: Image.asset('images/milo3.png'),
-                  )),
-                )),
+                      decoration: BoxDecoration(
+                        color: Colors.black,
+                        border: Border.all(color: Colors.black),
+                        borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(25),
+                            bottomLeft: Radius.circular(25)),
+                      ),
+                      child: Center(
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.transparent),
+                            onPressed: () {
+                              Navigator.pushNamed(context, Home.screenRout);
+                            },
+                            child: Image.asset('images/milo3.png'),
+                          )),
+                    )),
                 Expanded(
                     flex: 2,
                     child: Container(

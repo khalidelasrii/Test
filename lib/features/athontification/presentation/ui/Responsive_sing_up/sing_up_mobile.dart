@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:test/core/const_widgets/Logo.dart';
+import 'package:test/core/const_widgets/my_Appbar.dart';
 import 'package:test/core/const_widgets/drawer.dart';
 import 'package:test/core/const_widgets/my_color.dart';
 
@@ -14,7 +14,6 @@ class SingUpMobile extends StatelessWidget {
       backgroundColor: my_blue_gray,
       appBar: AppBar(
         backgroundColor: my_blue_gray,
-        title: Logo(context),
         actions: const [Icon(Icons.park_outlined)],
       ),
       drawer: myDrawer(context),
@@ -33,7 +32,7 @@ class SingUpMobile extends StatelessWidget {
                         topLeft: Radius.circular(25),
                         topRight: Radius.circular(25)),
                   ),
-                  child: Center(child: Logo(context)),
+                  child: Center(child: Expanded(child: Image.asset('images/milo2.png'))),
                 )),
                 Expanded(
                     flex: 2,
