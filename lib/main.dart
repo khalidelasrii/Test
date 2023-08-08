@@ -6,6 +6,7 @@ import 'package:test/sing_in.dart';
 import 'package:test/welcome_screen.dart';
 
 import 'bloc/Auth_bloc/bloc/auth_bloc.dart';
+import 'google_auth.dart';
 import 'home.dart';
 
 void main() async {
@@ -33,8 +34,9 @@ class Maktabati extends StatelessWidget {
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(focusColor: Colors.blue),
-          initialRoute: WelcomScreen.screenRout,
+          initialRoute: GoogleAuth.screenRout,
           routes: {
+            GoogleAuth.screenRout: (context) => const GoogleAuth(),
             // Auth.screenRout: (context) => const Auth(),
             SingIn.screenRout: (context) => const SingIn(),
             // SingUp.screenRout: (context) => const SingUp(),
