@@ -12,35 +12,36 @@ class Home extends StatelessWidget {
     final _user = FirebaseAuth.instance.currentUser;
     if (_user != null) {
       return Scaffold(
-        appBar: myAppBarConnected(context),
+        appBar: myAppBarConnected(context, _user),
       );
+    } else {
+      return Scaffold(
+          backgroundColor: Colors.red.shade300,
+          body: Row(
+            children: [
+              const Expanded(child: SizedBox()),
+              Center(
+                child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, WelcomScreen.screenRout);
+                    },
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.person_add_alt),
+                        SizedBox(
+                          width: 4,
+                        ),
+                        Text(
+                          'Tray to Create accounte',
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        ),
+                      ],
+                    )),
+              ),
+              const Expanded(child: SizedBox()),
+            ],
+          ));
     }
-    return Scaffold(
-        backgroundColor: Colors.red.shade300,
-        body: Row(
-          children: [
-            const Expanded(child: SizedBox()),
-            Center(
-              child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, WelcomScreen.screenRout);
-                  },
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.person_add_alt),
-                      SizedBox(
-                        width: 4,
-                      ),
-                      Text(
-                        'Tray to Create accounte',
-                        style: TextStyle(color: Colors.white, fontSize: 20),
-                      ),
-                    ],
-                  )),
-            ),
-            const Expanded(child: SizedBox()),
-          ],
-        ));
   }
 }

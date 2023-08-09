@@ -7,8 +7,19 @@ import 'package:test/welcome_screen.dart';
 import 'home.dart';
 
 /// AppBar user connected
-AppBar myAppBarConnected(BuildContext context) {
-  final _user = FirebaseAuth.instance.currentUser!;
+AppBar myAppBarConnected(BuildContext context, User _user) {
+  profilimage() {
+    return Container(
+      constraints: const BoxConstraints(maxHeight: 50),
+      child: ClipOval(
+        child: Image.network(
+          '${_user.photoURL}',
+          fit: BoxFit.cover,
+        ),
+      ),
+    );
+  }
+
   return AppBar(
     backgroundColor: Colors.black,
     title: Row(
@@ -20,7 +31,13 @@ AppBar myAppBarConnected(BuildContext context) {
         const SizedBox(
           width: 8,
         ),
-        Text('${_user.email}'),
+        _user.photoURL != null ? profilimage() : SizedBox(),
+        const SizedBox(
+          width: 8,
+        ),
+        _user.displayName != null
+            ? Text('${_user.displayName}')
+            : Text('${_user.email}'),
       ],
     ),
     actions: [

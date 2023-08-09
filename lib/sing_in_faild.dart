@@ -1,11 +1,33 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import 'package:test/home.dart';
 import 'package:test/my_const.dart';
 
 class SignInfaild extends StatelessWidget {
   const SignInfaild({super.key});
+
+  // ignore: body_might_complete_normally_nullable
+  Future<UserCredential?> signInWithGoogle() async {
+    try {
+      final GoogleSignIn _googleSignIn = GoogleSignIn();
+      final GoogleSignInAccount? googleSignInAccount =
+          await _googleSignIn.signIn();
+
+      if (googleSignInAccount != null) {
+        final GoogleSignInAuthentication googleSignInAuthentication =
+            await googleSignInAccount.authentication;
+        final AuthCredential credential = GoogleAuthProvider.credential(
+          accessToken: googleSignInAuthentication.accessToken,
+          idToken: googleSignInAuthentication.idToken,
+        );
+        return await FirebaseAuth.instance.signInWithCredential(credential);
+      }
+    } catch (error) {
+      print("Error signing in with Google: $error");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -99,6 +121,24 @@ class SignInfaild extends StatelessWidget {
             },
             child: const Text('Connexion'),
           ),
+
+          const SizedBox(
+            height: 10,
+          ),
+          ElevatedButton(
+              onPressed: () async {
+                try {
+                  final UserCredential? userCredential =
+                      await signInWithGoogle();
+
+                  if (userCredential != null) {
+                    Navigator.pushNamed(context, Home.screenRout);
+                  }
+                } catch (e) {
+                  print(e);
+                }
+              },
+              child: Icon(Icons.email_outlined))
         ],
       ),
     ));
