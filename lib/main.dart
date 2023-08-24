@@ -1,10 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:test/sing_in.dart';
-import 'package:test/welcome_screen.dart';
+import 'package:test/test_stream.dart';
 
-import 'home.dart';
+import 'authBloc/auth_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,25 +15,21 @@ void main() async {
           projectId: "test-faa0e",
           messagingSenderId: "471563730284",
           appId: "1:471563730284:web:cd12a8560e3da41bc30749"));
-  runApp(const Maktabati());
+  runApp(Test());
 }
 
-class Maktabati extends StatelessWidget {
-  const Maktabati({super.key});
+class Test extends StatelessWidget {
+  const Test({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(focusColor: Colors.blue),
-        initialRoute: WelcomScreen.screenRout,
-        routes: {
-          // GoogleAuth.screenRout: (context) => const GoogleAuth(),
-          // Auth.screenRout: (context) => const Auth(),
-          SingIn.screenRout: (context) => const SingIn(),
-          // SingUp.screenRout: (context) => const SingUp(),
-          Home.screenRout: (context) => const Home(),
-          WelcomScreen.screenRout: (context) => const WelcomScreen(),
-        });
+    return BlocProvider(
+        create: (context) =>
+            AuthBloc(firestorcode: Firestorcode())..add(GetallUserEvent()),
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(focusColor: Colors.blue),
+          home: const TestStream(),
+        ));
   }
 }
